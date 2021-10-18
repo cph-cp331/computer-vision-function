@@ -22,15 +22,16 @@ namespace My.Functions
 {
     public static class computervisionexample
     {
-        static string subscriptionKey = "f67a72fc989b4c90a061a355d081758b";
-        static string endpoint = "https://cp331computervision.cognitiveservices.azure.com/";
-        private const string ANALYZE_URL_IMAGE = "https://berlingske.bmcdn.dk/media/cache/resolve/image_x_large/image/131/1316138/23476506-health-coronavirusglobal-groceries.jpg";
+        static string subscriptionKey = "";
+        static string endpoint = "";
 
         [FunctionName("computervisionexample")]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
+            subscriptionKey = System.Environment.GetEnvironmentVariable("subkey", EnvironmentVariableTarget.Process);
+            endpoint = System.Environment.GetEnvironmentVariable("endpoint", EnvironmentVariableTarget.Process);
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             string imageurl = req.Query["imageurl"];
