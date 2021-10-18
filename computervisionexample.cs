@@ -123,6 +123,7 @@ namespace My.Functions
                       $"{face.FaceRectangle.Left}, {face.FaceRectangle.Top + face.FaceRectangle.Width}, " +
                       $"{face.FaceRectangle.Top + face.FaceRectangle.Height}");
                 }
+                result.Add("CD");
 
             }
             catch (Exception e)
